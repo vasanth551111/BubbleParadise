@@ -451,6 +451,7 @@ body {
     outline: none;
     -webkit-appearance: none;
     cursor: pointer;
+    touch-action: pan-x; /* Explicitly allow sliding on touch devices */
 }
 
 .setting-slider::-webkit-slider-thumb {

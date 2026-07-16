@@ -2855,16 +2855,18 @@ class Game {
         }
         
         if (musicVolume) {
-            musicVolume.addEventListener('input', (e) => {
+            const updateMusicVol = (e) => {
                 this.soundSynth.setMusicVolume(parseFloat(e.target.value));
-            });
+            };
+            musicVolume.addEventListener('input', updateMusicVol);
+            musicVolume.addEventListener('change', updateMusicVol);
         }
         
         // Difficulty rate slider binding
         const difficultyRate = document.getElementById('difficulty-rate');
         const difficultyLabel = document.getElementById('difficulty-label');
         if (difficultyRate && difficultyLabel) {
-            difficultyRate.addEventListener('input', (e) => {
+            const updateDifficulty = (e) => {
                 const val = parseFloat(e.target.value);
                 this.difficultyRate = val;
                 
@@ -2880,7 +2882,9 @@ class Game {
                 } else {
                     difficultyLabel.textContent = 'Instant (Super Fast)';
                 }
-            });
+            };
+            difficultyRate.addEventListener('input', updateDifficulty);
+            difficultyRate.addEventListener('change', updateDifficulty);
         }
         
         if (toggleSfxBtn) {
@@ -2893,9 +2897,11 @@ class Game {
         }
         
         if (sfxVolume) {
-            sfxVolume.addEventListener('input', (e) => {
+            const updateSfxVol = (e) => {
                 this.soundSynth.setSfxVolume(parseFloat(e.target.value));
-            });
+            };
+            sfxVolume.addEventListener('input', updateSfxVol);
+            sfxVolume.addEventListener('change', updateSfxVol);
         }
         
 
