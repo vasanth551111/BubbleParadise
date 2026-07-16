@@ -2627,6 +2627,9 @@ class Game {
         this.introManager = new IntroManager();
         this.randomEventManager = new RandomEventManager();
         
+        // Difficulty Level Adjustment (1.0 = normal, < 1.0 = slower/harder)
+        this.difficultyRate = 1.0;
+        
         // Background list allocations
         this.clouds = [];
         for (let i = 0; i < 4; i++) {
@@ -2857,6 +2860,29 @@ class Game {
             });
         }
         
+        // Difficulty rate slider binding
+        const difficultyRate = document.getElementById('difficulty-rate');
+        const difficultyLabel = document.getElementById('difficulty-label');
+        if (difficultyRate && difficultyLabel) {
+            difficultyRate.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                this.difficultyRate = val;
+                
+                // Dynamically display readable feedback labels
+                if (val <= 0.3) {
+                    difficultyLabel.textContent = 'Relaxed (Very Slow)';
+                } else if (val <= 0.6) {
+                    difficultyLabel.textContent = 'Slow';
+                } else if (val <= 1.1) {
+                    difficultyLabel.textContent = 'Normal';
+                } else if (val <= 1.6) {
+                    difficultyLabel.textContent = 'Fast';
+                } else {
+                    difficultyLabel.textContent = 'Instant (Super Fast)';
+                }
+            });
+        }
+        
         if (toggleSfxBtn) {
             toggleSfxBtn.addEventListener('click', () => {
                 const enabled = !this.soundSynth.sfxEnabled;
@@ -2986,7 +3012,7 @@ class Game {
         }
         
         // 2. Add pop to progress and update adaptive synth ratio
-        this.happinessManager.addPop(popValue);
+        this.happinessManager.addPop(popValue * this.difficultyRate);
         this.soundSynth.updateHappinessRatio(this.happinessManager.actualPops / 100);
         
         // Trigger celebration mode
