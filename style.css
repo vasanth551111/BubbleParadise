@@ -21,6 +21,7 @@ body {
     font-family: 'Fredoka', 'Nunito', sans-serif;
     perspective: 1000px;
     touch-action: none; /* Prevents all pinch-zoom and drag scrolling */
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><line x1='6' y1='26' x2='20' y2='12' stroke='%238c78ad' stroke-width='3' stroke-linecap='round' /><line x1='18' y1='14' x2='21' y2='11' stroke='%23ffca28' stroke-width='3' stroke-linecap='round' /><path d='M23,3 L24.5,7.5 L29,9 L24.5,10.5 L23,15 L21.5,10.5 L17,9 L21.5,7.5 Z' fill='%23ffca28' stroke='%23fff' stroke-width='0.5' /><circle cx='14' cy='9' r='1.5' fill='%23fff' opacity='0.8' /><circle cx='27' cy='18' r='1' fill='%23fff' opacity='0.6' /></svg>") 23 9, auto;
 }
 
 /* Responsive 16:9 Game Container with Letterboxing */
