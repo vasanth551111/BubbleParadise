@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Bubble Paradise</title>
+    <!-- Friendly rounded Google Fonts for kid-friendly UI -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon.png">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registered!', reg))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
+    </script>
+</head>
+<body>
+    <!-- Game Container with Letterboxing to maintain 16:9 aspect ratio -->
+    <div id="game-container">
+        <canvas id="gameCanvas" width="1280" height="720"></canvas>
+        
+        <!-- Corner Instruction Reminder (small, friendly) -->
+        <div id="corner-instruction" class="hidden">
+            <span class="corner-icon">🫧</span> Tap Bubbles!
+        </div>
+        
+        <!-- Large friendly floating instructions -->
+        <div id="instruction-overlay">TAP THE BUBBLES!</div>
+        
+        <!-- Large friendly celebration overlay -->
+        <div id="celebration-overlay">YOU FILLED THE WORLD WITH HAPPINESS!</div>
+        
+        <!-- Post-Celebration Interactive Button -->
+        <button id="celebration-btn" class="hidden">LET'S CREATE MORE MAGIC!</button>
+        
+        <!-- Settings button in the corner -->
+        <button id="settings-btn" aria-label="Settings">⚙️</button>
+        
+        <!-- Settings modal drawer -->
+        <div id="settings-modal">
+            <div class="settings-box">
+                <div class="settings-title">🌸 Bubble Paradise Settings 🌸</div>
+                
+                <!-- Music Toggle and Volume -->
+                <div class="setting-row">
+                    <label>Background Music</label>
+                    <div class="setting-controls">
+                        <button id="toggle-music-btn" class="settings-toggle-btn">ON</button>
+                        <input type="range" id="music-volume" class="setting-slider" min="0" max="1" step="0.05" value="1">
+                    </div>
+                </div>
+                
+                <hr style="border: 0; border-top: 1px solid #e2cee2; margin: 15px 0;">
+                
+                <!-- SFX Toggle and Volume -->
+                <div class="setting-row">
+                    <label>Sound Effects</label>
+                    <div class="setting-controls">
+                        <button id="toggle-sfx-btn" class="settings-toggle-btn">ON</button>
+                        <input type="range" id="sfx-volume" class="setting-slider" min="0" max="1" step="0.05" value="1">
+                    </div>
+                </div>
+                
+                <button class="close-settings-btn" id="close-settings">SAVE & CLOSE</button>
+            </div>
+        </div>
+        
+        <!-- Sound initialization helper overlay for first tap -->
+        <div id="audio-overlay">
+            <div class="audio-box">
+                <span class="audio-emoji">🫧</span>
+                <p>Tap to enter Bubble Paradise!</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "Bubble Paradise",
+  "short_name": "BubbleParadise",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#dbf3fa",
+  "theme_color": "#dbf3fa",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
