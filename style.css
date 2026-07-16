@@ -313,11 +313,10 @@ body {
     }
 }
 
-/* Settings Button & Modal Dialog Styles */
-#settings-btn {
+/* Settings & Fullscreen Buttons & Modal Dialog Styles */
+#settings-btn, #fullscreen-btn {
     position: absolute;
     top: 30px;
-    right: 30px;
     width: 48px;
     height: 48px;
     background: rgba(255, 255, 255, 0.75);
@@ -337,12 +336,21 @@ body {
     transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.8s ease;
 }
 
-#settings-btn:hover {
+#settings-btn {
+    right: 30px;
+}
+
+#fullscreen-btn {
+    right: 90px;
+    font-size: 20px; /* Looks best for ⛶ */
+}
+
+#settings-btn:hover, #fullscreen-btn:hover {
     transform: scale(1.08) rotate(15deg);
     background: rgba(255, 255, 255, 0.9);
 }
 
-#settings-btn:active {
+#settings-btn:active, #fullscreen-btn:active {
     transform: scale(0.95);
 }
 
@@ -568,14 +576,20 @@ body {
 }
 
 @media (max-width: 920px) and (orientation: landscape) {
-    #settings-btn, #corner-instruction {
+    #settings-btn, #fullscreen-btn, #corner-instruction {
         top: 20px;
+    }
+    #settings-btn, #fullscreen-btn {
+        width: 44px;
+        height: 44px;
     }
     #settings-btn {
         right: 20px;
-        width: 44px;
-        height: 44px;
         font-size: 20px;
+    }
+    #fullscreen-btn {
+        right: 74px;
+        font-size: 16px;
     }
     #corner-instruction {
         left: 20px;
